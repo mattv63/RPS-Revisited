@@ -1,0 +1,71 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-image: url(https://imgur.com/PHIChQk.jpg);
+}
+
+.box {
+  background-image: url(https://imgur.com/7sr2cRz.jpg);
+  align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2%;
+  background-color: #ffffff;
+  padding-bottom: 5%;
+}
+
+h1 {
+  font-family: sans-serif;
+  text-align: center;
+  padding-top: 20px;
+}
+
+button{
+  border-radius: 50%;
+  padding: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  font-size:150%;
+  color: #292727;
+}
+
+#rock {
+  background-color: #9b9bfb;
+}
+
+#paper{
+  background-color: #f17777;
+}
+
+#scissors{
+  background-color: #7df17d;
+}
+
+#results{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.playerScore {
+  float: left;
+  position: absolute;
+  margin-top: 7%;
+  margin-left: 4%;
+  padding-left: 4%;
+  padding-right: 4%;
+
+}
+
+.computerScore {
+  position: absolute;
+  float: right;
+  margin-left: 41%;
+  margin-top: 7%;
+  padding-left: 2.75%;
+  padding-right: 2.75%
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>RPS-Revisited</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="box">
+    <h1>Rock Paper Scissors</h1>
+    <div class="playerScore">
+      <h3> Player Score </h3>
+      <h1 id=playerScore>0</h1>
+    </div>
+    <div class="computerScore">
+      <h3> Computer Score </h3>
+      <h1 id=computerScore>0</h1>
+    </div>
+    <button type="button" id="rock">Rock</button>
+    <button type="button" id="paper">Paper</button>
+    <button type="button" id="scissors">Scissors</button>
+    <div id="results">
+    </div>
+  </div>
+
+<script>
+let playerWins = 0;
+let computerWins = 0;
+let gameCounter = 0;
+let x;
+
+const result = document.querySelector('#results')
+const paragraph = document.createElement('p');
+const buttons = document.querySelectorAll('button');
+const pWins = document.querySelector("#playerScore");
+const cWins = document.querySelector("#computerScore");
+
+paragraph.textContent = "First to five points wins!";
+result.appendChild(paragraph);
+
+buttons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    x = playRound(button.id, computerPlay());
+    paragraph.textContent = x;
+    result.appendChild(paragraph);
+
+    pWins.textContent = playerWins;
+    cWins.textContent = computerWins;
+
+    if (playerWins == 5){
+      paragraph.textContent = "Congratulations! You Win!";
+      playerWins = 0;
+      computerWins = 0;
+    }
+    else if (computerWins == 5){
+      paragraph.textContent = "Sorry. Better luck next time.";
+      playerWins = 0;
+      computerWins = 0;
+    }
+  });
+});
+
+
+
+
+
+function playRound(playerSelection, computerSelection){
+  let result;
+  let string;
+  let fullString;
+
+  ("You chose " + playerSelection);
+  ("The computer chose " + computerSelection);
+
+  if (playerSelection.toUpperCase() == "ROCK"){
+    if (computerSelection == "rock"){ string = "Tie. Does not count.";
+      result = 2;
+    }
+    else if (computerSelection == "paper"){ string = "Paper beats rock. You lose.";
+      result = 1;
+      computerWins++;
+    }
+    else if (computerSelection == "scissors"){ string = "Rock beats scissors. You win!";
+      result = 0;
+      playerwins++;
+    }
+    gameCounter++;
+  }
+
+  else if (playerSelection.toUpperCase() == "PAPER"){
+    if (computerSelection == "rock"){string = "Paper beats rock. You win!";
+      result = 0;
+      playerWins++;
+    }
+    else if (computerSelection == "paper"){string = "Tie. Does not count.";
+      result = 2;
+    }
+    else if (computerSelection == "scissors"){string = "Scissors beats paper. You lose.";
+      result = 1;
+      computerWins;
+    }
+  }
+
+  else if (playerSelection.toUpperCase() == "SCISSORS"){
+    if (computerSelection == "rock"){string = "Rock beats scissors. You lose.";
+      result = 1;
+      computerWins++;
+    }
+    else if (computerSelection == "paper"){string = "Scissors beats paper. You win!";
+      result = 0;
+      playerWins++;
+    }
+    else if (computerSelection == "scissors"){string = "Tie. Does not count.";
+      result = 2;
+    }
+    gameCounter++;
+  }
+
+  fullString = ("You chose " + playerSelection + "." + "\nThe computer chose " + computerSelection + ".\n" + string);
+
+  return fullString;
+}
+
+function computerPlay(){
+  let compPlay = Math.floor((Math.random() * 3) + 1);
+  let compString = "";
+  if (compPlay == 1){
+    compString = "rock";
+  }
+  else if (compPlay == 2){
+    compString = "paper";
+  }
+  else if (compPlay == 3){
+    compString = "scissors";
+  }
+  return compString;
+}
+
+function game(){
+  let playerSelection;
+  let computerSelection;
+  playerSelection = button.id;
+  computerSelection = computerPlay();
+  result = playRound(playerSelection, computerSelection);
+  if (result == 0){
+    playerWins++;
+    gameCounter++;
+  }
+  else if (result == 1){
+    computerWins++;
+    gameCounter++;
+  }
+  if (gameCounter == 5){
+    console.log("Final score: " + playerWins + " to " + computerWins);
+    if (playerWins > computerWins){
+      console.log("Congratulations! You win!");
+    }
+    else{
+      console.log("You lose. Try again?");
+    }
+  }
+}
+
+</script>
+
+</body>
+
+</html>
